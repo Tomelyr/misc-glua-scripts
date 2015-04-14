@@ -4,7 +4,7 @@ local function BlockVehicle( ply, veh, _ )
 			ply.IsVehBlocked = false
 			return true
 		else
-			ply:ChatPrint("Du bist noch" .. math.ceil(CurTime() - ply.VehBlockedTime) .." Sekunden gebannt."
+			ply:ChatPrint("Du bist noch " .. math.ceil(CurTime() - ply.VehBlockedTime) .." Sekunden gebannt.")
 			return false
 		end
 	end
@@ -17,7 +17,8 @@ hook.Add( "player_disconnect", "BausVehBlockDC", function( data )
 	if data.IsVehBlocked then
 		file.Write("vehblocked/" .. steamid, data.VehBlockedTime)
 	end
-end
+end)
+
 gameevent.Listen( "player_connect" )
 hook.Add( "player_connect", "BausVehBlockConnect", function( data )
 	local steamid = data.networkid
@@ -25,7 +26,7 @@ hook.Add( "player_connect", "BausVehBlockConnect", function( data )
 		local time = file.Read("vehblocked/" .. steamid, "DATA")
 		data.IsVehBlocked = time
 	end
-end
+end)
 
 function ulx.vehblock(ply, targets)
 	for _,v in pairs(targets) do
