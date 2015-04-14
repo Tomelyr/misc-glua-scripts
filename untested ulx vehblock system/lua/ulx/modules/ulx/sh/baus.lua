@@ -4,7 +4,7 @@ local function BlockVehicle( ply, veh, _ )
 			ply.IsVehBlocked = false
 			return true
 		else
-			ply:ChatPrint("Du bist noch " .. math.ceil(CurTime() - ply.VehBlockedTime) .." Sekunden gebannt.")
+			ply:ChatPrint("Du bist noch " .. math.ceil(ply.VehBlockedTime - CurTime()) .." Sekunden gebannt.")
 			return false
 		end
 	end
