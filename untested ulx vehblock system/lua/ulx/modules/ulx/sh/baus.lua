@@ -16,7 +16,7 @@ hook.Add( "player_disconnect", "BausVehBlockDC", function( data )
 	local steamid = data.networkid
 	if data.IsVehBlocked then
 		file.Write("vehblocked/" .. steamid, data.VehBlockedTime)
-	end
+	end	
 end)
 
 gameevent.Listen( "player_connect" )
